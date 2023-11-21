@@ -6,8 +6,6 @@
 <jsp:useBean id="options" scope="request" type="ru.mail.teamcity.web.parameters.data.Options"/>
 <jsp:useBean id="values" scope="request" type="java.util.Collection"/>
 <jsp:useBean id="configuration" scope="request" type="ru.mail.teamcity.web.parameters.manager.RequestConfiguration" />
-<jsp:useBean id="configurationUrl" scope="request" type="java.lang.String"/>
-<jsp:useBean id="configurationMethod" scope="request" type="java.lang.String"/>
 <jsp:useBean id="multiple" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="tagSupport" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="enableEditOnError" scope="request" type="java.lang.Boolean"/>

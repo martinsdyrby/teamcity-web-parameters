@@ -106,8 +106,6 @@ public class WebParameterProvider extends ParameterControlProviderAdapter {
         modelAndView.getModel().put(VALUES_NAME, values);
 
         modelAndView.getModel().put("configuration", configuration);
-        modelAndView.getModel().put("configurationUrl", configuration.getUrl());
-        modelAndView.getModel().put("configurationMethod", configuration.getMethod() == RequestConfiguration.Method.GET ? "GET" : "POST");
         modelAndView.getModel().put(MULTIPLE_PARAMETER, configuration.getMultiple());
         modelAndView.getModel().put(TAG_SUPPORT_PARAMETER, configuration.getTagSupport());
         modelAndView.getModel().put(ENABLE_EDIT_ON_ERROR_PARAMETER, configuration.getEnableEditOnError());
