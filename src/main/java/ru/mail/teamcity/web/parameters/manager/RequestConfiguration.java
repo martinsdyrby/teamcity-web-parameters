@@ -128,7 +128,7 @@ public class RequestConfiguration {
     }
 
     @Nullable
-    public String getUrl() {
+    String getUrl() {
         return url;
     }
 
@@ -141,7 +141,7 @@ public class RequestConfiguration {
     }
 
     @NotNull
-    public Method getMethod() {
+    Method getMethod() {
         if (null == method) {
             return Method.GET;
         }
