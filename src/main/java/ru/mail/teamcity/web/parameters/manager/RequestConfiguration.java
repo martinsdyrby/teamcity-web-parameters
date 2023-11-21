@@ -50,6 +50,8 @@ public class RequestConfiguration {
     private final ValueExtractor extractor;
 
     @Nullable
+    private String unresolvedUrl;
+    @Nullable
     private String url;
     @Nullable
     private Integer timeout;
@@ -81,6 +83,7 @@ public class RequestConfiguration {
     }
 
     public void process() {
+        this.unresolvedUrl = extractor.getRequiredValue(URL_PARAMETER);
         this.url = extractor.getExpandedRequiredValue(URL_PARAMETER);
         this.timeout = extractor.getIntegerValue(TIMEOUT_PARAMETER, DEFAULT_TIMEOUT);
         this.method = Method.valueOf(extractor.getValue(METHOD_PARAMETER, Method.GET.toString()));
@@ -125,7 +128,7 @@ public class RequestConfiguration {
     }
 
     @Nullable
-    String getUrl() {
+    public String getUrl() {
         return url;
     }
 
@@ -138,7 +141,7 @@ public class RequestConfiguration {
     }
 
     @NotNull
-    Method getMethod() {
+    public Method getMethod() {
         if (null == method) {
             return Method.GET;
         }
@@ -231,6 +234,22 @@ public class RequestConfiguration {
                 ", tagSupport=" + tagSupport +
                 ", enableEditOnError=" + enableEditOnError +
                 '}';
+    }
+
+    public String toJSONString() {
+        return "{" +
+                "\"url\": \"" + url + "\"" +
+                ", \"unresolvedUrl\": \"" + unresolvedUrl + "\"" +
+                ", \"timeout\": \"" + timeout + "\"" +
+                ", \"method\": \"" + method + "\"" +
+                ", \"payload\": \"" + payload + "\"" +
+                ", \"headers\":" + headers +
+                ", \"format\": \"" + format + "\"" +
+                ", \"multiple\": " + multiple +
+                ", \"multipleSeparator\": \"" + multipleSeparator + "\"" +
+                ", \"tagSupport\": " + tagSupport +
+                ", \"enableEditOnError\": " + enableEditOnError +
+                "}";
     }
 }
 

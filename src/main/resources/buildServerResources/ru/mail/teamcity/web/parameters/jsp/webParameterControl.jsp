@@ -5,6 +5,9 @@
 <jsp:useBean id="context" scope="request" type="jetbrains.buildServer.controllers.parameters.ParameterRenderContext"/>
 <jsp:useBean id="options" scope="request" type="ru.mail.teamcity.web.parameters.data.Options"/>
 <jsp:useBean id="values" scope="request" type="java.util.Collection"/>
+<jsp:useBean id="configuration" scope="request" type="ru.mail.teamcity.web.parameters.manager.RequestConfiguration" />
+<jsp:useBean id="configurationUrl" scope="request" type="java.lang.String"/>
+<jsp:useBean id="configurationMethod" scope="request" type="java.lang.String"/>
 <jsp:useBean id="multiple" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="tagSupport" scope="request" type="java.lang.Boolean"/>
 <jsp:useBean id="enableEditOnError" scope="request" type="java.lang.Boolean"/>
@@ -31,7 +34,7 @@
             $j(document).ready(function ($) {
                 addScript("${teamcityPluginResourcesPath}/ru/mail/teamcity/web/parameters/js/select2.full.min.js", function () {
                     addScript("${teamcityPluginResourcesPath}/ru/mail/teamcity/web/parameters/js/webParametersControl.js", function () {
-                        WebParametersControl.init("${context.id}");
+                        WebParametersControl.init("${context.id}", '${configuration.toJSONString()}');
                     });
                 });
             });
